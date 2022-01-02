@@ -1,4 +1,0 @@
-# hello-world
-First GitHub repository
-           Started using gitHub and making changes to learn about branching and all that stuff.C
-        Chaning from computer.Somewhat familiar.Yes, Ready GitHub.

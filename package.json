@@ -7,15 +7,6 @@
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Gangaraj123/woc4.0-node-blog-app-Gangaraj-Bopparam.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Gangaraj123/woc4.0-node-blog-app-Gangaraj-Bopparam/issues"
-  },
   "homepage": "https://github.com/Gangaraj123/woc4.0-node-blog-app-Gangaraj-Bopparam#readme",
   "dependencies": {
     "axios": "^0.24.0",

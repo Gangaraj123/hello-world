@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
     Blog.find()
     .then(
         result=>{
-            res.render('../Templates/basic', { page: "Home",blogs:result})
+            res.render('./Templates/basic', { page: "Home",blogs:result})
         }
     )
 })

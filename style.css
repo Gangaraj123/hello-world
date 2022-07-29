@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    min-height: 100vh;
+    background-color: rgb(52, 32, 32);
+}
+
+body,
+.quote-input {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+    background-color: aliceblue;
+    padding: 1rem;
+    border-radius: .05rem;
+    width: 700px;
+    max-width: 90%;
+}
+
+.timer {
+    position: absolute;
+    top: 2rem;
+    font-size: 3rem;
+    color: wheat;
+    font-weight: bold;
+}
+
+.quote-display {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.quote-input {
+
+    background-color: transparent;
+    outline: none;
+    resize: none;
+    width: 100%;
+    height: 8rem;
+    font-size: 1rem;
+    margin: auto;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+}
+
+.quote-input:focus {
+    border-color: rgb(66, 209, 15);
+}
+
+.correct {
+    color: green;
+    font-style: bold;
+    /* background-color: rgb(101, 209, 101); */
+}
+
+.incorrect {
+    color: red;
+    text-decoration: underline;
+}
+
+.restart {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.restart_btn {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    margin: auto;
+    width: 60%;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #888;
+    width: 50%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#wpm-result {
+    font-size: 130px;
+    color: #4CAF50;
+}

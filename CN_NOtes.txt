@@ -1,0 +1,119 @@
+=> What is needed to assign IP address?
+You either have to know the number of computers in network or you should know the number of networks you needed.
+ICANN : Internet Corporation for assigned names and numbers gives the addresses
+=> Each interface should have a different ip address (Ex: wired connection and wireless connection should have different ip address).
+=> There are 5 classes of IP addresses based on the number of networks and number of hosts in each of those networks.
+> class A :prefix 0,  2^7 networks, 2^24 hosts 
+	(1.0.0.0 to 126.0.0.0) (network part is bit 1-7)
+> class B :prefix 10, 2^14 networks, 2^16 hosts
+	(128.1.0.0 to 191.255.0.0)(network part is bit 2-15)
+> Class C :prefix 110, 2^21, 2^8 hosts
+	(192.0.1.0 to (223.255.255.0) (newtork part i bit 4-24)
+> class D : 
+	(224.0.0.0 to 239.255.255.255)
+> Class E :
+	(240.0.0.0 to 255.255.255.244)
+   Total number of IP addresses in a network = 2^(host bits).
+  Total number of hosts = 2^(host bits)-2 
+   Because the first is subnet address and last is broadcast address.(-2).
+=> Subnet mask is used to extract newtork address and host address from the IP address by doing &. network part = IP & subnet , host part = IP & (!subnet)
+=> Subnetwork : a part of a large network
+=> Subnetting is taking some bits from host part and consider them to distinguish networks.
+	find number of bits to be taken and convert them to 0 to find new subnet.
+=> Devices inside a subnetwork can physically reach out each other without intervening router.
+=> Subnetting improves security and the maintenance and administration of subnets is easy.
+=> the network address of subnet is its subnet ID.
+=> Fixed length and variable length subnetting are the types of subnetting.
+=> In fixed length, all subnets have same size, equal number of hosts , same subnet mask.
+=> In variable length, subnets are not of same size, do not have equal number of hosts,and 	do not have same subnet mask.
+=>Default gateway is the router to which the host sends data that should be passed into another host which is out of the network.(The default router that is used to carry packets out of the network.).
+
+Categories of Routing protocols:
+Interior: Routing within some organizations,ex: within subnets of DAIICT.
+ 	=>RIP: Routing Information Protocol (uses distance vector routing)
+	=>OSPF: Open Short path First Protocol(uses link state routing)
+Exterior: Routing between different networks
+	=>BGP: Broader Gateway Protoco (uses path vector routing)
+	** BGP can be also used as interior protocol (IBGP) inside Administration.
+
+Routing Algorithms are classified as
+ = Dynamic of Adaptive routing algorithms (adapts to changes in topology)
+		* Isolated: each node has no information from others
+		* Centralized: central node has whole network info
+		* Decentralized or Distribuited:Each node receives information from its neighbours
+		  and takes decisions to select efficient path.
+ = Static of Non-Adaptive routing algorithms
+	 *Flooding: incoming packet is sent to every neighbour (floods)
+	 *Random walk: packets sent to one of random neighbour.
+ ||| Routing vs Flooding (GFG)
+
+AD: Administrative Distance (0-255)
+RIP is a dynamic Routing protocol.used UDP.Port number 520.
+	=> uses hop count (number of routers in path) as routing metric.
+	=> Distance vectors are exchanged every 30 seconds.
+	=> AD of 120.
+	=> each advertisement contains list of up to 25 destination subnets.
+	=> Maximum allowed hopcount=15 and hop count 16 is considered as network unreachable.
+Features:
+	Updates are exchanged periodically, updates are always broadcasted,Full routing tables are sent in updates, trust routing info from neighbours.(Routing on rumours).
+Verions: RIP V1,RIP v2, RIP ng.
+RIP v1 is known as Classful Routing Protocol because it doesn’t send information of subnet mask in its routing update. 
+RIP v2 is known as Classless Routing Protocol because it sends information of subnet mask in its routing update. 
+
+
+		Labs:
+Lab 2:
+HTTP is an application level protocol which is used to deliver data from server to client and vice versa.Any type of content 
+can be exchanged as long as the server and client are compatible with it.It is Connection less protocol ( server and client doesn't store any info about each other).It is state less(client and server does not expect anything from each other after requesting).
+* IF-MODIFIED-SINCE: a flag that is sent by browser if an already fetched request is sent again asking that if the files on the server are modified after the time in this field, then only resend the response.
+
+Status codes:
+200  - OK
+304  - NOT MODIFIED
+401  - UNAUTHORIZED
+
+Lab 3:
+DHCP (Dynamic Host configuration protocol) sent over UDP.It is used to automate process of configuring devices on IP networks thus allowing them to use network services such as DNS(Domain Name server), NTP (Network Time Protocol). It is enhancement of an older protocol called BOOTP.
+sequence of packets:
+	1)Discover:pc sends to locate all available dhcp servers on same subnetwork.
+	2)Offer : DHCP broadcasts reply informing that it is available. This message contains the network information, such as 	client IP address, subnet mask, default gateway IP address, DNS IP address, IP lease time and DHCP server IP address. 
+	3)Request : client requests network configuration data including ip for itself.
+	4)Acknowledge: sends the configuration data.
+DHCP Discover and DHCP request messages are differed by:
+In requset message two new fields are added, one is SERVER Identifier ( selects one dhcp server from multiple dhcp offer requests received) and second is Client Fully Qualified Domain Name.
+The Transaction ID field for one transcation (4 messages above) will be same that helps client and server to ensure that they are having the same conversation.
+Router Line field indicates where the client should send message by default.
+Lease time tells the client how long it can use this assigned IP  address until a new address is assigned.
+If the clients dhcp release message is lost, the client releases the IP address but the server will not reassign that address until the client’s lease on the address expires.ARP packets were sent and received during the DHCP packet-exchange period.
+Purpose of these packets was to give information about MAC and IP addresses.
+
+Lab 4:
+The TCP Congestion control Algorithm has two major component: slow start, congestion avoidance. Slow
+start and congestion avoidance are mandatory components of TCP, differing in how they increase the size of
+cwnd in response to received ACKs.
+Difference in congestion control policy of Tahoe and Reno:
+Tahoe:Timeout- slow start, packet loss -slow start
+Reno : Timeout -slow start,packet loss - AIMD.
+Largest possible source port number is 2^(16-1) as port number is 16 bits.
+
+Lab 5:
+Internet protocol is responsible for routing packets across network boundaries, primary protocol that establishes the Internet and also in the Internet Layer.
+ICMP: Internet control messaging protocol, a network layer protocol. ICMP messages communicate information about network connectivity issues back to source.It sends control messages such as destination is unreachable,source route failed,etc.To Communicate problems with data transmission.
+Large IP datagrams are fragmented into multiple fragments, and this info can be found in the flags like more_fragments, fragment_offset in the IP datagram header.
+TTL( Time to live):amount of time that the IP packet is allowed to exist and after that it is discarded.It is to prevent loops.TTL remains same for all packets sent by same first hop router.
+An Identification field will be there for each ip packet.
+The ICMP packet does not have source and destination port numbers because it was designed to communicate network-layer information between hosts and routers, not between application layer processes.A "Type" and "Code" are associated with each ICMP packet.
+The ICMP echo packets are identical to the ICMP ping query packets.
+The ICMP error packet contains the header and the original 8 bytes of the ICMP packet that the error was for.
+
+Lab 7: 
+OSPF is a network layer , link-state routing protocol that is used to find the best path between the source and the destination router using its own shortest path first.
+AD value = 110.
+** OSPF does not use TCP or UDP.OSPF implements its own transport error detection and correction functions. OSPF uses multicast addressing for distributing route information within a broadcast domain.
+LSA : Link state advertisements.
+Each OSPF router distributes information about its local state to neighbours using a LSA message.
+=>Global routing algorithms are also called as link-state algorithms.
+=>Decentralized routing algorithms are also known as distance-vector (DV) algorithms because each node maintains a vector of distances(estimates of cost) to all other nodes in the network.
+
+
+
